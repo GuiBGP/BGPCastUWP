@@ -31,9 +31,67 @@ namespace BGPCastUWP.Interface.UWP
             {
                 new NavMenuItem()
                 {
-                    Symbol = Symbol.Contact,
-                    Label = "What Play Page",
-                    DestPage = typeof(WhatPlayPage)
+                    DestPage = typeof(WhatPlayPage),
+                    Logo = "/Assets/Square44x44Logo.scale-200.png",
+                    Name ="Café Brasil Podcast",
+                    News ="399 NOVO",
+                    Quantity ="55"
+                },
+                new NavMenuItem()
+                {
+                    DestPage = typeof(WhatPlayPage),
+                    Logo = null,
+                    Name ="Central3 Podcasts - Xadrez Verbal",
+                    News ="19 NOVO",
+                    Quantity ="2"
+                },
+                new NavMenuItem()
+                {
+                    DestPage = typeof(WhatPlayPage),
+                    Logo = null,
+                    Name ="NerdCast",
+                    News ="534 NOVO",
+                    Quantity ="2"
+                },
+                new NavMenuItem()
+                {
+                    DestPage = typeof(WhatPlayPage),
+                    Logo = null,
+                    Name ="Pauta Livre News",
+                    News ="213 NOVO",
+                    Quantity ="2"
+                },
+                new NavMenuItem()
+                {
+                    DestPage = typeof(WhatPlayPage),
+                    Logo = null,
+                    Name ="Pelada na Net Podcast",
+                    News ="201 NOVO",
+                    Quantity =""
+                },
+                new NavMenuItem()
+                {
+                    DestPage = typeof(WhatPlayPage),
+                    Logo = null,
+                    Name ="Rede Geek - Ultrageek",
+                    News ="95 NOVO",
+                    Quantity ="2"
+                },
+                new NavMenuItem()
+                {
+                    DestPage = typeof(WhatPlayPage),
+                    Logo = null,
+                    Name ="Rádiofobia Podcasts",
+                    News ="286 NOVO",
+                    Quantity ="2"
+                },
+                new NavMenuItem()
+                {
+                    DestPage = typeof(WhatPlayPage),
+                    Logo = null,
+                    Name ="Scicast",
+                    News ="32 NOVO",
+                    Quantity ="5"
                 },
             });
 

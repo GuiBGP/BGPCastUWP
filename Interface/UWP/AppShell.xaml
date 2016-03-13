@@ -17,22 +17,25 @@
          navigation buttons if they appear on a device.  An app can opt-out by switching to UseCoreWindow.
     -->
 
-    <Page.Resources>
-        <DataTemplate x:Key="NavMenuItemTemplate" x:DataType="local:NavMenuItem">
+    <!--<Page.Resources>
+        <DataTemplate x:Key="NavMenuItemTemplate" x:DataType="controls:NavMenuItem">
             <Grid>
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="48" />
-                    <ColumnDefinition />
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
                 </Grid.ColumnDefinitions>
-                <!-- Showing a ToolTip and the Label is redundant.  We put the ToolTip on the icon.
-                     It appears when the user hovers over the icon, but not the label which provides
-                     value when the SplitView is 'Compact' while reducing the likelihood of showing
-                     redundant information when the label is shown.-->
-                <!--<FontIcon x:Name="Glyph" FontSize="16" Glyph="{x:Bind SymbolAsChar}" VerticalAlignment="Center" HorizontalAlignment="Center" ToolTipService.ToolTip="{x:Bind Label}"/>-->
-                <TextBlock x:Name="Text" Grid.Column="1" Text="{x:Bind Label}" />
+                <Grid.RowDefinitions>
+                    <RowDefinition />
+                    <RowDefinition />
+                </Grid.RowDefinitions>
+                <Image x:Name="Logo" Source="{x:Bind Logo}" Grid.Column="0" Grid.Row="0" Grid.RowSpan="2" Width="48" Height="48" VerticalAlignment="Center" Stretch="Uniform" HorizontalAlignment="Center"/>
+                <TextBlock x:Name="Name" Text="{x:Bind Name}" Grid.Column="1" Grid.Row="0" TextAlignment="Left" VerticalAlignment="Center" />
+                <TextBlock x:Name="News" Text="{x:Bind News}" Grid.Column="1" Grid.Row="1" TextAlignment="Left" VerticalAlignment="Center" />
+                <TextBlock x:Name="Quantity" Text="{x:Bind Quantity}" Grid.Column="2" Grid.Row="0" Grid.RowSpan="2" FontSize="25" Width="25" VerticalAlignment="Center" HorizontalAlignment="Center"/>
             </Grid>
         </DataTemplate>
-    </Page.Resources>
+    </Page.Resources>-->
 
     <Grid>
         <!-- Adaptive triggers -->
@@ -71,10 +74,16 @@
                                           Grid.Row="1"
                                           TabIndex="3"
                                           ContainerContentChanging="NavMenuItemContainerContentChanging"
-                                          ItemContainerStyle="{StaticResource NavMenuItemContainerStyle}"
                                           ItemTemplate="{StaticResource NavMenuItemTemplate}"
-                                          ItemInvoked="NavMenuList_ItemInvoked" />
+                                          ItemInvoked="NavMenuList_ItemInvoked" >
+                    <ListView.ItemContainerStyle>
+                        <Style TargetType="ListViewItem">
+                            <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+                        </Style>
+                    </ListView.ItemContainerStyle>
+                </controls:NavMenuListView>
             </SplitView.Pane>
+
 
             <!-- OnNavigatingToPage we synchronize the selected item in the nav menu with the current page.
                  OnNavigatedToPage we move keyboard focus to the first item on the page after it's loaded and update the Back button. -->
