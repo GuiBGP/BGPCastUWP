@@ -25,78 +25,8 @@ namespace BGPCastUWP.Interface.UWP
     /// </summary>
     public sealed partial class AppShell : Page
     {
-        // Declare the top level nav items
-        private List<NavMenuItem> navlist = new List<NavMenuItem>(
-            new[]
-            {
-                new NavMenuItem()
-                {
-                    DestPage = typeof(WhatPlayPage),
-                    Logo = "/Assets/Square44x44Logo.scale-200.png",
-                    Name ="Café Brasil Podcast",
-                    News ="399 NOVO",
-                    Quantity ="55"
-                },
-                new NavMenuItem()
-                {
-                    DestPage = typeof(WhatPlayPage),
-                    Logo = null,
-                    Name ="Central3 Podcasts - Xadrez Verbal",
-                    News ="19 NOVO",
-                    Quantity ="2"
-                },
-                new NavMenuItem()
-                {
-                    DestPage = typeof(WhatPlayPage),
-                    Logo = null,
-                    Name ="NerdCast",
-                    News ="534 NOVO",
-                    Quantity ="2"
-                },
-                new NavMenuItem()
-                {
-                    DestPage = typeof(WhatPlayPage),
-                    Logo = null,
-                    Name ="Pauta Livre News",
-                    News ="213 NOVO",
-                    Quantity ="2"
-                },
-                new NavMenuItem()
-                {
-                    DestPage = typeof(WhatPlayPage),
-                    Logo = null,
-                    Name ="Pelada na Net Podcast",
-                    News ="201 NOVO",
-                    Quantity =""
-                },
-                new NavMenuItem()
-                {
-                    DestPage = typeof(WhatPlayPage),
-                    Logo = null,
-                    Name ="Rede Geek - Ultrageek",
-                    News ="95 NOVO",
-                    Quantity ="2"
-                },
-                new NavMenuItem()
-                {
-                    DestPage = typeof(WhatPlayPage),
-                    Logo = null,
-                    Name ="Rádiofobia Podcasts",
-                    News ="286 NOVO",
-                    Quantity ="2"
-                },
-                new NavMenuItem()
-                {
-                    DestPage = typeof(WhatPlayPage),
-                    Logo = null,
-                    Name ="Scicast",
-                    News ="32 NOVO",
-                    Quantity ="5"
-                },
-            });
-
         public static AppShell Current = null;
-
+        private List<NavMenuItem> navlist = NavMenuItem.GetList();
         /// <summary>
         /// Initializes a new instance of the AppShell, sets the static 'Current' reference,
         /// adds callbacks for Back requests and changes in the SplitView's DisplayMode, and
@@ -124,7 +54,11 @@ namespace BGPCastUWP.Interface.UWP
 
             SystemNavigationManager.GetForCurrentView().BackRequested += SystemNavigationManager_BackRequested;
 
+            NavMenuList.SelectionMode = ListViewSelectionMode.Single;
+            NavMenuList.IsItemClickEnabled = true;
+            NavMenuList.ItemClick += NavMenuList_ItemClick;
             NavMenuList.ItemsSource = navlist;
+
         }
 
         public Frame AppFrame { get { return this.frame; } }
@@ -210,6 +144,7 @@ namespace BGPCastUWP.Interface.UWP
                     this.AppFrame.Navigate(item.DestPage, item.Arguments);
                 }
             }
+            
         }
 
         /// <summary>
@@ -237,12 +172,12 @@ namespace BGPCastUWP.Interface.UWP
 
                 var container = (ListViewItem)NavMenuList.ContainerFromItem(item);
 
-                // While updating the selection state of the item prevent it from taking keyboard focus.  If a
-                // user is invoking the back button via the keyboard causing the selected nav menu item to change
-                // then focus will remain on the back button.
-                if (container != null) container.IsTabStop = false;
-                NavMenuList.SetSelectedItem(container);
-                if (container != null) container.IsTabStop = true;
+                //// While updating the selection state of the item prevent it from taking keyboard focus.  If a
+                //// user is invoking the back button via the keyboard causing the selected nav menu item to change
+                //// then focus will remain on the back button.
+                //if (container != null) container.IsTabStop = false;
+                //NavMenuList.SetSelectedItem(container);
+                //if (container != null) container.IsTabStop = true;
             }
         }
 
@@ -336,6 +271,33 @@ namespace BGPCastUWP.Interface.UWP
             {
                 args.ItemContainer.ClearValue(AutomationProperties.NameProperty);
             }
+        }
+
+        private void NavMenuList_ItemClick(object sender, ItemClickEventArgs e)
+        {
+
+            var itemX = NavMenuList.ContainerFromItem(e.ClickedItem);
+
+            var item = (NavMenuItem)((ListView)sender).ItemFromContainer(itemX);
+
+            if (item != null)
+            {
+                if (item.DestPage != null &&
+                    item.DestPage != this.AppFrame.CurrentSourcePageType)
+                {
+                    this.AppFrame.Navigate(item.DestPage, item.Arguments);
+                }
+            }
+
+            if (RootSplitView.IsPaneOpen)
+            {
+                RootSplitView.IsPaneOpen = false;
+                if (itemX is ListViewItem)
+                {
+                    ((ListViewItem)itemX).Focus(FocusState.Programmatic);
+                }
+            }
+
         }
     }
 }
