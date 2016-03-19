@@ -138,10 +138,10 @@ namespace BGPCastUWP.Interface.UWP
 
             if (item != null)
             {
-                if (item.DestPage != null &&
-                    item.DestPage != this.AppFrame.CurrentSourcePageType)
+                if (item.Destination != null &&
+                    item.Destination != this.AppFrame.CurrentSourcePageType)
                 {
-                    this.AppFrame.Navigate(item.DestPage, item.Arguments);
+                    this.AppFrame.Navigate(item.Destination, item.Arguments);
                 }
             }
             
@@ -157,14 +157,14 @@ namespace BGPCastUWP.Interface.UWP
         {
             if (e.NavigationMode == NavigationMode.Back)
             {
-                var item = (from p in this.navlist where p.DestPage == e.SourcePageType select p).SingleOrDefault();
+                var item = (from p in this.navlist where p.Destination == e.SourcePageType select p).SingleOrDefault();
                 if (item == null && this.AppFrame.BackStackDepth > 0)
                 {
                     // In cases where a page drills into sub-pages then we'll highlight the most recent
                     // navigation menu item that appears in the BackStack
                     foreach (var entry in this.AppFrame.BackStack.Reverse())
                     {
-                        item = (from p in this.navlist where p.DestPage == entry.SourcePageType select p).SingleOrDefault();
+                        item = (from p in this.navlist where p.Destination == entry.SourcePageType select p).SingleOrDefault();
                         if (item != null)
                             break;
                     }
@@ -282,10 +282,10 @@ namespace BGPCastUWP.Interface.UWP
 
             if (item != null)
             {
-                if (item.DestPage != null &&
-                    item.DestPage != this.AppFrame.CurrentSourcePageType)
+                if (item.Destination != null &&
+                    item.Destination != this.AppFrame.CurrentSourcePageType)
                 {
-                    this.AppFrame.Navigate(item.DestPage, item.Arguments);
+                    this.AppFrame.Navigate(item.Destination, item.Arguments);
                 }
             }
 
@@ -296,6 +296,37 @@ namespace BGPCastUWP.Interface.UWP
                 {
                     ((ListViewItem)itemX).Focus(FocusState.Programmatic);
                 }
+            }
+
+        }
+
+        private void AnyButton_Click(object sender, RoutedEventArgs e)
+        {
+            Button button = (Button)sender;
+            switch (button.Name) {
+                case "WhatPlay":
+                    this.AppFrame.Navigate(typeof(WhatPlayPage));
+                    break;
+                case "AllFeeds":
+                    this.AppFrame.Navigate(typeof(AllFeedsPage));
+                    break;
+                case "AddFeed":
+                    this.AppFrame.Navigate(typeof(AddFeedPage));
+                    break;
+                case "ManageFeeds":
+                    //Esse altera as propriedades da AppSheell, permitindo a edição dos feeds listados
+                    break;
+                case "Settings":
+                    this.AppFrame.Navigate(typeof(SettingsPage));
+                    break;
+                case "Help":
+                    //Esse no exemplo abre uma página de helper no browser
+                    break;
+                case "GoPro":
+                    //Esse abre um pop-up para assinatura do pacote
+                    break;
+                default:
+                    break;
             }
 
         }

@@ -107,6 +107,18 @@
     </Compile>
     <Compile Include="Controls\NavMenuItem.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Views\AddFeedPage.xaml.cs">
+      <DependentUpon>AddFeedPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\AllFeedsPage.xaml.cs">
+      <DependentUpon>AllFeedsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\EpisodePage.xaml.cs">
+      <DependentUpon>EpisodePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\SettingsPage.xaml.cs">
+      <DependentUpon>SettingsPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\WhatPlayPage.xaml.cs">
       <DependentUpon>WhatPlayPage.xaml</DependentUpon>
     </Compile>
@@ -118,6 +130,14 @@
     <None Include="BGPCastUWP.Interface.UWP_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Assets\PodcastSymbol\central3.jpeg" />
+    <Content Include="Assets\PodcastSymbol\deviante.jpeg" />
+    <Content Include="Assets\PodcastSymbol\jovemnerd.jpeg" />
+    <Content Include="Assets\PodcastSymbol\peladananet.jpeg" />
+    <Content Include="Assets\PodcastSymbol\pln.jpeg" />
+    <Content Include="Assets\PodcastSymbol\portalcafebrasil.jpeg" />
+    <Content Include="Assets\PodcastSymbol\radiofobia.jpeg" />
+    <Content Include="Assets\PodcastSymbol\redegeek.jpeg" />
     <Content Include="Properties\Default.rd.xml" />
     <Content Include="Assets\LockScreenLogo.scale-200.png" />
     <Content Include="Assets\SplashScreen.scale-200.png" />
@@ -147,6 +167,22 @@
     <Page Include="Styles\Styles.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\AddFeedPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\AllFeedsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\EpisodePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\SettingsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\WhatPlayPage.xaml">
       <SubType>Designer</SubType>

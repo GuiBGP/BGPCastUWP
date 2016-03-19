@@ -22,11 +22,11 @@ namespace BGPCastUWP.Interface.UWP.Views
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
-    public sealed partial class WhatPlayPage : Page
+    public sealed partial class AllFeedsPage : Page
     {
         private List<NavMenuItem> navlist = NavMenuItem.GetList();
 
-        public WhatPlayPage()
+        public AllFeedsPage()
         {
             this.InitializeComponent();
 

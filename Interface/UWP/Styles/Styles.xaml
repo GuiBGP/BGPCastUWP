@@ -106,7 +106,7 @@
     </Style>
 
     <DataTemplate x:Key="NavMenuItemTemplate">
-        <Grid>
+        <Grid Margin="0,10,0,10">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto"/>
                 <ColumnDefinition Width="*"/>
@@ -117,9 +117,60 @@
                 <RowDefinition />
             </Grid.RowDefinitions>
             <Image x:Name="Logo" Source="{Binding Logo}" Grid.Column="0" Grid.Row="0" Grid.RowSpan="2" Width="48" Height="48" VerticalAlignment="Center" Stretch="Uniform" HorizontalAlignment="Center"/>
-            <TextBlock x:Name="Name" Text="{Binding Name}" Grid.Column="1" Grid.Row="0" TextAlignment="Left" VerticalAlignment="Center" />
-            <TextBlock x:Name="News" Text="{Binding News}" Grid.Column="1" Grid.Row="1" TextAlignment="Left" VerticalAlignment="Center" />
-            <TextBlock x:Name="Quantity" Text="{Binding Quantity}" Grid.Column="2" Grid.Row="0" Grid.RowSpan="2" FontSize="25" Width="25" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+            <TextBlock x:Name="Name" Text="{Binding Name}" Grid.Column="1" Grid.Row="0" TextAlignment="Left" VerticalAlignment="Center" Margin="10,0,0,0" />
+            <TextBlock x:Name="News" Text="{Binding News}" Grid.Column="1" Grid.Row="1" TextAlignment="Left" VerticalAlignment="Center" Margin="10,0,0,0" />
+            <TextBlock x:Name="Quantity" Text="{Binding Quantity}" Grid.Column="2" Grid.Row="0" Grid.RowSpan="2" FontSize="25" Width="25" Margin="10,0,0,0" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+        </Grid>
+    </DataTemplate>
+
+    <DataTemplate x:Key="EpisodeMenuItemTemplate">
+        <Grid Margin="0,5,0,5" Padding="10,10,0,0" Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />                
+            </Grid.RowDefinitions>
+            <Image x:Name="Logo" Source="{Binding Logo}" Grid.Column="0" Grid.Row="0" Grid.RowSpan="2" Width="80" Height="80" VerticalAlignment="Center" Stretch="Uniform" HorizontalAlignment="Center"/>
+            <!--Aqui deve ser criado uma progress bar, que permita a exibição do tempo-->
+            <TextBlock x:Name="Publish" Text="{Binding Name}" Grid.Column="1" Grid.Row="0" TextAlignment="Left" VerticalAlignment="Top" Margin="10,0,0,0" />
+            <TextBlock x:Name="Title" Text="{Binding News}"  MaxLines="2" TextWrapping="Wrap" TextTrimming="WordEllipsis" Grid.Column="1" Grid.Row="1" TextAlignment="Left" VerticalAlignment="Top" Margin="10,5,0,0"/>
+            <TextBlock x:Name="Description" Text="{Binding Name}" MaxLines="2" TextWrapping="Wrap" TextTrimming="CharacterEllipsis" Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="2" TextAlignment="Left" VerticalAlignment="Top" Margin="0,5,0,0"/>
+            <Grid Grid.Row="3" Grid.ColumnSpan="2">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <StackPanel Orientation="Horizontal">
+                    <!--Play U+E768 | Pause U+E769-->
+                    <ToggleButton x:Name="PlayCommandToggleButton"
+                      Style="{StaticResource SplitViewTogglePaneButtonStyle}"
+                      AutomationProperties.Name="Play/Pause"
+                      ToolTipService.ToolTip="Play/Pause" Content="&#xE768;" />
+                    <TextBlock x:Name="Time" Text="104 min" TextAlignment="Left" VerticalAlignment="Center" />
+                </StackPanel>
+                <!--Selected Episode U+E762  U+EA98  U+E90B| Download U+E896 | to select U+E8FD |   ***********************************************************************************-->
+                <StackPanel Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right">
+                    <!--<ProgressRing ManipulationMode="None" IsActive="True"/>-->
+                    <!--Download deve conter um progressBar para informar o processo de download-->
+                    <ToggleButton x:Name="DownloadToggleButton"
+                          Style="{StaticResource SplitViewTogglePaneButtonStyle}"
+                          AutomationProperties.Name="Download"
+                          ToolTipService.ToolTip="Download" Content="&#xE896;" />
+                    <ToggleButton x:Name="AddListCommandToggleButton"
+                          Style="{StaticResource SplitViewTogglePaneButtonStyle}"
+                          AutomationProperties.Name="Add/Remove"
+                          ToolTipService.ToolTip="Add/Remove" Content="&#xE8FD;" />
+                    <ToggleButton x:Name="MoreToggleButton"
+                          Style="{StaticResource SplitViewTogglePaneButtonStyle}"
+                          AutomationProperties.Name="More"
+                          ToolTipService.ToolTip="More" Content="&#xE712;" />
+                </StackPanel>
+            </Grid>
         </Grid>
     </DataTemplate>
 

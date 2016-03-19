@@ -19,8 +19,8 @@
             <SplitView.Pane >
                 <ScrollViewer HorizontalScrollMode="Disabled" VerticalScrollBarVisibility="Hidden">
                     <StackPanel HorizontalAlignment="Stretch">
-                        <Button x:Name="WhatPlay" Content="O que Tocar" Width="{Binding OpenPaneLength, ElementName=RootSplitView}" HorizontalContentAlignment="Left"/>
-                        <Button x:Name="AllFeeds" Content="Todos os feeds" Width="{Binding OpenPaneLength, ElementName=RootSplitView}" HorizontalContentAlignment="Left"/>
+                        <Button x:Name="WhatPlay" Content="O que Tocar" Width="{Binding OpenPaneLength, ElementName=RootSplitView}" HorizontalContentAlignment="Left" Click="AnyButton_Click"/>
+                        <Button x:Name="AllFeeds" Content="Todos os feeds" Width="{Binding OpenPaneLength, ElementName=RootSplitView}" HorizontalContentAlignment="Left" Click="AnyButton_Click"/>
                         <ListView x:Name="NavMenuList"
                                                   Grid.Row="1"
                                                   TabIndex="3"
@@ -32,7 +32,7 @@
                                 </Style>
                             </ListView.ItemContainerStyle>
                         </ListView>
-                        <Button x:Name="AddFeed"  Width="{Binding OpenPaneLength, ElementName=RootSplitView}">
+                        <Button x:Name="AddFeed"  Width="{Binding OpenPaneLength, ElementName=RootSplitView}" Click="AnyButton_Click">
                             <Button.Content>
                                 <StackPanel Orientation="Horizontal">
                                     <FontIcon FontSize="16" Glyph="&#xE109;" Margin="0,0,10,0" VerticalAlignment="Center" HorizontalAlignment="Left"/>
@@ -40,7 +40,7 @@
                                 </StackPanel>
                             </Button.Content>
                         </Button>
-                        <Button x:Name="ManageFeeds"  Width="{Binding OpenPaneLength, ElementName=RootSplitView}" HorizontalContentAlignment="Left">
+                        <Button x:Name="ManageFeeds"  Width="{Binding OpenPaneLength, ElementName=RootSplitView}" HorizontalContentAlignment="Left" Click="AnyButton_Click">
                             <Button.Content>
                                 <StackPanel Orientation="Horizontal">
                                     <FontIcon FontSize="16" Glyph="&#xEA55;" Margin="0,0,10,0" VerticalAlignment="Center" HorizontalAlignment="Left"/>
@@ -48,7 +48,7 @@
                                 </StackPanel>
                             </Button.Content>
                         </Button>
-                        <Button x:Name="Settings"  Width="{Binding OpenPaneLength, ElementName=RootSplitView}" HorizontalContentAlignment="Left">
+                        <Button x:Name="Settings"  Width="{Binding OpenPaneLength, ElementName=RootSplitView}" HorizontalContentAlignment="Left" Click="AnyButton_Click">
                             <Button.Content>
                                 <StackPanel Orientation="Horizontal">
                                     <FontIcon FontSize="16" Glyph="&#xE713;" Margin="0,0,10,0" VerticalAlignment="Center" HorizontalAlignment="Left"/>
@@ -56,7 +56,7 @@
                                 </StackPanel>
                             </Button.Content>                       
                         </Button>
-                        <Button x:Name="Help"  Width="{Binding OpenPaneLength, ElementName=RootSplitView}" HorizontalContentAlignment="Left">
+                        <Button x:Name="Help"  Width="{Binding OpenPaneLength, ElementName=RootSplitView}" HorizontalContentAlignment="Left" Click="AnyButton_Click">
                             <Button.Content>
                                 <StackPanel Orientation="Horizontal">
                                     <FontIcon FontSize="16" Glyph="&#xE11B;" Margin="0,0,10,0" VerticalAlignment="Center" HorizontalAlignment="Left"/>
@@ -64,7 +64,7 @@
                                 </StackPanel>
                             </Button.Content>
                         </Button>
-                        <Button x:Name="GoPro"  Width="{Binding OpenPaneLength, ElementName=RootSplitView}" HorizontalContentAlignment="Left">
+                        <Button x:Name="GoPro"  Width="{Binding OpenPaneLength, ElementName=RootSplitView}" HorizontalContentAlignment="Left" Click="AnyButton_Click">
                             <Button.Content>
                                 <StackPanel Orientation="Horizontal">
                                     <FontIcon FontSize="16" Glyph="&#xE12B;" Margin="0,0,10,0" VerticalAlignment="Center" HorizontalAlignment="Left"/>
