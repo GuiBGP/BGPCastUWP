@@ -13,25 +13,26 @@
             <RowDefinition Height="Auto"/>
             <RowDefinition />
         </Grid.RowDefinitions>
-        <CommandBar x:Name="TopCommandBar" VerticalAlignment="Top" HorizontalContentAlignment="Stretch" Background="Gray">
-            <AppBarButton Icon="Edit" Label="Edit"/>
-            <AppBarButton Icon="Delete" Label="Delete"/>
-            <AppBarSeparator/>
-            <AppBarToggleButton Icon="Sort" Label="Sort"/>
+        <CommandBar x:Name="TopCommandBar" VerticalAlignment="Top" HorizontalContentAlignment="Stretch" Background="#FFFF6C4C">
+            <AppBarToggleButton Content="&#xE00B;" FontFamily="{ThemeResource SymbolThemeFontFamily}" Label="Sort" />
             <CommandBar.SecondaryCommands>
-                <AppBarButton Label="Menu Item 1"/>
-                <AppBarButton Label="Menu Item 2"/>
-                <AppBarButton Label="Menu Item 3"/>
+                <AppBarButton Label="Atualização de 'Todos os feeds'"/>
+                <AppBarButton Label="Ordenar"/>
+                <AppBarButton Label="Filtro"/>
+                <AppBarButton Label="Pesquisar"/>
+                <AppBarButton Label="Apagar Reproduzido"/>
+                <AppBarButton Label="Cards compactos"/>
+                <AppBarButton Label="Reproduzir vídeos como áudio"/>
             </CommandBar.SecondaryCommands>
             <CommandBar.Content>
-                <controls:PageHeader Background="Gray">
+                <controls:PageHeader Background="#FFFF6C4C">
                     <controls:PageHeader.HeaderContent>
-                        <TextBlock Text="Todos os Episódios" Style="{ThemeResource PageTitleTextBlockStyle}" TextWrapping="NoWrap"/>
+                        <TextBlock Text="O que Tocar" Style="{ThemeResource PageTitleTextBlockStyle}" TextWrapping="NoWrap"/>
                     </controls:PageHeader.HeaderContent>
                 </controls:PageHeader>
             </CommandBar.Content>
         </CommandBar>
-        <ScrollViewer Grid.Row="1" HorizontalScrollMode="Disabled" VerticalScrollBarVisibility="Hidden" Padding="0,20,0,0"  Background="{ThemeResource SystemControlBackgroundChromeMediumBrush}">
+        <ScrollViewer Grid.Row="1" HorizontalScrollMode="Disabled" VerticalScrollBarVisibility="Hidden" Padding="0,10,0,0"  Background="{ThemeResource SystemControlBackgroundChromeMediumBrush}">
             <StackPanel HorizontalAlignment="Stretch">
                 <Grid>
                     <Grid.ColumnDefinitions>
@@ -45,10 +46,7 @@
                         <RowDefinition />
                     </Grid.RowDefinitions>
 
-                    <TextBlock x:Name="AllEpisodesBlock" Grid.Row="0" Grid.Column="0" Grid.RowSpan="2" HorizontalAlignment="Left" VerticalAlignment="Center" Text="TODOS OS EPISÓDIOS" FontSize="29.333" Margin="10,0,0,0"/>
-                    <TextBlock x:Name="TotalEpisodesBlock" Grid.Row="0" Grid.Column="1" HorizontalAlignment="Right" Text="19 episódios" Margin="0,0,12,0"/>
-                    <TextBlock x:Name="MemoryEpisodesBlock" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Right" Text="844 MB" Margin="0,0,12,0"/>
-                    <Rectangle Grid.Row="2" Grid.ColumnSpan="2" HorizontalAlignment="Stretch" Fill="Orange" Height="4" Margin="0,12,0,20" />
+                    <TextBlock x:Name="LastestEpisodesBlock" Grid.Row="0" Grid.Column="0" Grid.RowSpan="2" HorizontalAlignment="Left" VerticalAlignment="Center" Text="ÚLTIMOS EPISÓDIOS" FontSize="29.333" Margin="10,0,0,10"/>
                     <ListView x:Name="EpisodeMenuList"
                                                       Grid.Row="3" Grid.ColumnSpan="2"
                                                       TabIndex="3"
