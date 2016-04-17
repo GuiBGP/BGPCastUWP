@@ -3,11 +3,69 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:BGPCastUWP.Interface.UWP.Views"
+    xmlns:controls="using:BGPCastUWP.Interface.UWP.Controls"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
 
-    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    <!--<Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <TextBlock x:Name="textBlock" HorizontalAlignment="Center" VerticalAlignment="Center"  TextWrapping="Wrap" Text="This is Add Feed Page!" />
+    </Grid>-->
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        <CommandBar x:Name="TopCommandBar" VerticalAlignment="Top" HorizontalContentAlignment="Stretch" Background="Gray">
+            <AppBarButton Icon="Find" Label="Find" x:Name="FindAppBarButtom" Click="FindAppBarButtom_Click"/>
+            <AppBarButton Icon="Cancel" Label="Cancel" x:Name="CancelAppBarButtom" Click="CancelAppBarButtom_Click" Visibility="Collapsed"/>
+            <!--<AppBarToggleButton Icon="NewWindow" Label="NewWindow"/> Poderia ser usado com icone do SecondaryCommads-->
+            <CommandBar.SecondaryCommands>
+                <AppBarButton Label="Endereço do Feed"/>
+                <AppBarButton Label="Importar do Feedly"/>
+                <AppBarButton Label="Adicionar Pasta como Feed Virtual"/>
+                <AppBarButton Label="Importar arquivo OPML"/>
+            </CommandBar.SecondaryCommands>
+            <CommandBar.Content>
+                <controls:PageHeader Background="Gray">
+                    <controls:PageHeader.HeaderContent >
+                        <!--Pode Ajudar na definição do TextBox como algo Fill no Height-->
+                        <!--http://stackoverflow.com/questions/29644800/wpf-stackpanel-content-vertical-alignment-->
+                        <StackPanel>
+                            <TextBlock x:Name="AddTextBlock" Text="Adicionar Feed" Style="{ThemeResource PageTitleTextBlockStyle}"/>
+                            <!--TODO: Verificar como Expandir o Height Automaticamente, Centralizar o Texto e Remover o X do TextBox. E com manter o Estilo do TextBox Desabilitado-->
+                            <TextBox x:Name="SearchTextBox" PlaceholderText="Procurar por Podcast" Height="48" VerticalContentAlignment="Center" Visibility="Collapsed" KeyDown="SearchTextBox_KeyDown"/>
+                        </StackPanel>
+                    </controls:PageHeader.HeaderContent>
+                </controls:PageHeader>
+            </CommandBar.Content>
+        </CommandBar>
+        <Pivot x:Name="rootPivot" Grid.Row="1" Background="{ThemeResource SystemControlBackgroundChromeMediumBrush}">
+            <PivotItem Header="TENDÊNCIAS">
+                <!--Pivot content goes here-->
+                <TextBlock Text="Content of pivot item 1. TENDÊNCIAS"/>
+            </PivotItem>
+            <PivotItem Header="RECOMENDADO">
+                <!--Pivot content goes here-->
+                <TextBlock Text="Content of pivot item 2. RECOMENDADO"/>
+            </PivotItem>
+            <PivotItem Header="EDITORES">
+                <!--Pivot content goes here-->
+                <TextBlock Text="Content of pivot item 3. EDITORES"/>
+            </PivotItem>
+            <PivotItem Header="CATEGORIA">
+                <!--Pivot content goes here-->
+                <TextBlock Text="Content of pivot item 4. CATEGORIA"/>
+            </PivotItem>
+            <PivotItem Header="INTERNACIONAL">
+                <!--Pivot content goes here-->
+                <TextBlock Text="Content of pivot item 5. INTERNACIONAL"/>
+            </PivotItem>
+            <PivotItem Header="INTERESSES">
+                <!--Pivot content goes here-->
+                <TextBlock Text="Content of pivot item 6. INTERESSES"/>
+            </PivotItem>
+        </Pivot>
     </Grid>
 </Page>

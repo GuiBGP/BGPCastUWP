@@ -14,7 +14,7 @@
             <RowDefinition />
         </Grid.RowDefinitions>
         <CommandBar x:Name="TopCommandBar" VerticalAlignment="Top" HorizontalContentAlignment="Stretch" Background="#FFFF6C4C">
-            <AppBarToggleButton Content="&#xE00B;" FontFamily="{ThemeResource SymbolThemeFontFamily}" Label="Sort" />
+            <!--<AppBarToggleButton Content="&#xE00B;" FontFamily="{ThemeResource SymbolThemeFontFamily}" Label="Sort" />-->
             <CommandBar.SecondaryCommands>
                 <AppBarButton Label="Atualização de 'Todos os feeds'"/>
                 <AppBarButton Label="Ordenar"/>
