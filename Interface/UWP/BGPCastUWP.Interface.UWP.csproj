@@ -189,7 +189,16 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\iTunesSearchPortable\iTunesSearch\iTunesSearch\iTunesSearch.csproj">
+      <Project>{331d1ab4-bbc8-449f-a5b5-94afb4456b70}</Project>
+      <Name>iTunesSearch</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\qdfeed\QDFeedParser.UWP\QDFeedParser.UWP.csproj">
+      <Project>{7f3f5206-3cee-4200-ae88-98f7fdefc692}</Project>
+      <Name>QDFeedParser.UWP</Name>
+    </ProjectReference>
+  </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>
   </PropertyGroup>

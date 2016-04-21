@@ -1,4 +1,5 @@
-﻿using System;
+﻿using QDFeedParser;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -7,6 +8,7 @@ using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.UI.Popups;
 using Windows.UI.Xaml;
+using Windows.UI.Xaml.Automation;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
 using Windows.UI.Xaml.Data;
@@ -59,7 +61,36 @@ namespace BGPCastUWP.Interface.UWP.Views
             if (e.Key == Windows.System.VirtualKey.Enter && !String.IsNullOrWhiteSpace(SearchTextBox.Text))
             {
                 e.Handled = true;
-                await new MessageDialog("Downloading!!!").ShowAsync();
+                AddFeedProgressRing.IsActive = true;
+                iTunesSearch.SearchResult result = await (new iTunesSearch.SearchRequest()).SearchAsync( "pelada+na+net");
+                AddFeedProgressRing.IsActive = false;
+
+                HttpFeedFactory factory = new HttpFeedFactory(new QDFeedParser.Xml.PodcastFeedXmlParser(), new PodcastFeedInstanceProvider());
+                //Uri url = new Uri(string.Format("http://feed.scicast.com.br/")); //http://feed.nerdcast.com.br  //http://feed.scicast.com.br/
+
+                List<PodcastRss20Feed> feedList = new List<PodcastRss20Feed>();
+
+                foreach (var item in result.Results)
+                {
+                    PodcastRss20Feed feed = (PodcastRss20Feed)factory.CreateFeed(new Uri(item.FeedUrl));
+                    feed.Image.Url = item.ArtworkUrl60;
+                    feedList.Add(feed);
+
+
+                    //feed.LastUpdated
+                    
+
+                }
+
+                FeedMenuList.SelectionMode = ListViewSelectionMode.Single;
+                FeedMenuList.ItemsSource = feedList;
+
+
+
+                RootPivot.Visibility = Visibility.Collapsed;
+                FeedMenuList.Visibility = Visibility.Visible;
+                await new MessageDialog("Downloading!!!  " + result.ResultCount).ShowAsync();
+
             }
         }
     }

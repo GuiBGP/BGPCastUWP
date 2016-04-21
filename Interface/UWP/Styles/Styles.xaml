@@ -133,7 +133,7 @@
                 <RowDefinition />
                 <RowDefinition />
                 <RowDefinition />
-                <RowDefinition />                
+                <RowDefinition />
             </Grid.RowDefinitions>
             <Image x:Name="Logo" Source="{Binding Logo}" Grid.Column="0" Grid.Row="0" Grid.RowSpan="2" Width="80" Height="80" VerticalAlignment="Center" Stretch="Uniform" HorizontalAlignment="Center"/>
             <!--Aqui deve ser criado uma progress bar, que permita a exibição do tempo-->
@@ -173,5 +173,15 @@
             </Grid>
         </Grid>
     </DataTemplate>
-
+    <DataTemplate x:Key="AddFeedMenuItemTemplate">
+        <StackPanel Orientation="Vertical" Margin="0,10,0,10">
+            <TextBlock x:Name="Publish" Text="{Binding LastUpdated}" />
+            <TextBlock x:Name="Title" Text="{Binding Title}"  MaxLines="2" />
+            <TextBlock x:Name="Description" Text="{Binding Description}" MaxLines="2"/>
+            <StackPanel Orientation="Horizontal">
+                <Image x:Name="Logo" Source="{Binding Image.Url}" Width="40" Height="40" VerticalAlignment="Center" Stretch="Uniform" HorizontalAlignment="Center"/>
+                <Button Content="ASSINAR" />
+            </StackPanel>
+        </StackPanel>
+    </DataTemplate>
 </ResourceDictionary>

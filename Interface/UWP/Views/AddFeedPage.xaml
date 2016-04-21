@@ -41,7 +41,11 @@
                 </controls:PageHeader>
             </CommandBar.Content>
         </CommandBar>
-        <Pivot x:Name="rootPivot" Grid.Row="1" Background="{ThemeResource SystemControlBackgroundChromeMediumBrush}">
+        
+        <!--TODO: Verificar como é a melhor forma de colocar um Progress, seja Bar o Ring-->
+        <ProgressRing x:Name="AddFeedProgressRing" VerticalAlignment="Center" HorizontalAlignment="Center" IsActive="False"/>
+
+        <Pivot x:Name="RootPivot" Grid.Row="1" Background="{ThemeResource SystemControlBackgroundChromeMediumBrush}">
             <PivotItem Header="TENDÊNCIAS">
                 <!--Pivot content goes here-->
                 <TextBlock Text="Content of pivot item 1. TENDÊNCIAS"/>
@@ -67,5 +71,14 @@
                 <TextBlock Text="Content of pivot item 6. INTERESSES"/>
             </PivotItem>
         </Pivot>
+        <ListView x:Name="FeedMenuList" Visibility="Collapsed"
+                Grid.Row="1"
+                ItemTemplate="{StaticResource AddFeedMenuItemTemplate}">
+            <ListView.ItemContainerStyle>
+                <Style TargetType="ListViewItem">
+                    <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+                </Style>
+            </ListView.ItemContainerStyle>
+        </ListView>
     </Grid>
 </Page>
