@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
+using System.Threading.Tasks;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.UI.Popups;
@@ -63,34 +64,41 @@ namespace BGPCastUWP.Interface.UWP.Views
                 e.Handled = true;
                 AddFeedProgressRing.IsActive = true;
                 iTunesSearch.SearchResult result = await (new iTunesSearch.SearchRequest()).SearchAsync( "pelada+na+net");
-                AddFeedProgressRing.IsActive = false;
-
+                
                 HttpFeedFactory factory = new HttpFeedFactory(new QDFeedParser.Xml.PodcastFeedXmlParser(), new PodcastFeedInstanceProvider());
-                //Uri url = new Uri(string.Format("http://feed.scicast.com.br/")); //http://feed.nerdcast.com.br  //http://feed.scicast.com.br/
 
                 List<PodcastRss20Feed> feedList = new List<PodcastRss20Feed>();
 
-                foreach (var item in result.Results)
-                {
-                    PodcastRss20Feed feed = (PodcastRss20Feed)factory.CreateFeed(new Uri(item.FeedUrl));
-                    feed.Image.Url = item.ArtworkUrl60;
-                    feedList.Add(feed);
+                //foreach (var item in result.Results)
+                //{
+                //    PodcastRss20Feed feed =  (PodcastRss20Feed) await factory.CreateFeedAsync(new Uri(item.FeedUrl));
+                //    feed.Image.Url = item.ArtworkUrl60;
+                //    feedList.Add(feed);
+                //}
 
+                //Parallel.ForEach(result.Results, async item => {
+                //    PodcastRss20Feed feed = (PodcastRss20Feed) await factory.CreateFeedAsync(new Uri(item.FeedUrl));
+                //    feed.Image.Url = item.ArtworkUrl60;
+                //    feedList.Add(feed);
+                //});
 
-                    //feed.LastUpdated
-                    
-
-                }
+                Task t = Task.Run(async () => {
+                    foreach (var item in result.Results)
+                    {
+                        PodcastRss20Feed feed = (PodcastRss20Feed)await factory.CreateFeedAsync(new Uri(item.FeedUrl));
+                        feed.Image.Url = item.ArtworkUrl60;
+                        feedList.Add(feed);
+                    }
+                });
+                t.Wait();
 
                 FeedMenuList.SelectionMode = ListViewSelectionMode.Single;
                 FeedMenuList.ItemsSource = feedList;
-
-
+                AddFeedProgressRing.IsActive = false;
 
                 RootPivot.Visibility = Visibility.Collapsed;
                 FeedMenuList.Visibility = Visibility.Visible;
                 await new MessageDialog("Downloading!!!  " + result.ResultCount).ShowAsync();
-
             }
         }
     }
