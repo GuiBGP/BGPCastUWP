@@ -18,6 +18,7 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
+using Windows.Web.Syndication;
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -70,6 +71,24 @@ namespace BGPCastUWP.Interface.UWP.Views
                 HttpFeedFactory factory = new HttpFeedFactory(new QDFeedParser.Xml.PodcastFeedXmlParser(), new PodcastFeedInstanceProvider());
 
                 List<PodcastRss20Feed> feedList = new List<PodcastRss20Feed>();
+
+                RootPivot.Visibility = Visibility.Collapsed;
+                FeedMenuList.Visibility = Visibility.Visible;
+
+                Stopwatch sw = new Stopwatch();
+
+                sw.Start();
+
+                foreach (var item in result.Results)
+                {
+                    PodcastRss20Feed feed = (PodcastRss20Feed) await factory.CreateFeedAsync(new Uri(item.FeedUrl));
+                    //feedList.Add(feed);
+                    FeedMenuList.Items.Add(feed);
+                }
+
+                sw.Stop();
+
+                SearchTextBox.Text += " | " + sw.Elapsed;
 
                 //foreach (var item in result.Results)
                 //{
@@ -334,8 +353,8 @@ namespace BGPCastUWP.Interface.UWP.Views
 
                 AddFeedProgressRing.IsActive = false;
 
-                RootPivot.Visibility = Visibility.Collapsed;
-                FeedMenuList.Visibility = Visibility.Visible;
+                //RootPivot.Visibility = Visibility.Collapsed;
+                //FeedMenuList.Visibility = Visibility.Visible;
 
                 await new MessageDialog("Downloading!!!  " + result.ResultCount).ShowAsync();
             }
