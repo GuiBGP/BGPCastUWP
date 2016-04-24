@@ -1,4 +1,5 @@
-﻿using QDFeedParser;
+﻿using iTunesSearch;
+using QDFeedParser;
 using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
@@ -32,6 +33,10 @@ namespace BGPCastUWP.Interface.UWP.Views
         public AddFeedPage()
         {
             this.InitializeComponent();
+
+            FeedMenuList.SelectionMode = ListViewSelectionMode.Single;
+            FeedMenuList.IsItemClickEnabled = true;
+            FeedMenuList.ItemClick += FeedMenuList_ItemClick;
         }
 
         private void FindAppBarButtom_Click(object sender, RoutedEventArgs e)
@@ -69,7 +74,7 @@ namespace BGPCastUWP.Interface.UWP.Views
                 FeedMenuList.Visibility = Visibility.Visible;
                 AddFeedProgress.Visibility = Visibility.Visible;
 
-                iTunesSearch.SearchResult result = await (new iTunesSearch.SearchRequest()).SearchAsync("p%", iTunesSearch.Media.Podcast);
+                SearchResult result = await (new SearchRequest()).SearchAsync("p%", iTunesSearch.Media.Podcast);
 
                 FeedMenuList.ItemsSource = result.Results;
                 //if hava only one line of artist name, we put the releaseDate again
@@ -80,6 +85,18 @@ namespace BGPCastUWP.Interface.UWP.Views
                 AddTextBlock.Visibility = Visibility.Visible;
                 CancelAppBarButtom.Visibility = Visibility.Collapsed;
                 SearchTextBox.Visibility = Visibility.Collapsed;
+            }
+        }
+
+        private void FeedMenuList_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            var itemX = FeedMenuList.ContainerFromItem(e.ClickedItem);
+
+            var item = ((ListView)sender).ItemFromContainer(itemX);
+
+            if (item != null)
+            {
+                ((Frame)this.Parent).Navigate(typeof(FeedPreviewPage), item);
             }
         }
     }
