@@ -19,14 +19,23 @@ using Windows.UI.Xaml.Navigation;
 
 namespace BGPCastUWP.Interface.UWP.Views
 {
+
+
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
     public sealed partial class FeedPreviewPage : Page
     {
+        private List<NavMenuItem> navlist = NavMenuItem.GetList();
+
         public FeedPreviewPage()
         {
             this.InitializeComponent();
+
+            EpisodeMenuList.SelectionMode = ListViewSelectionMode.Single;
+            EpisodeMenuList.ItemsSource = navlist;
+
+
         }
 
         /// <summary>
@@ -45,6 +54,11 @@ namespace BGPCastUWP.Interface.UWP.Views
             {
                 args.ItemContainer.ClearValue(AutomationProperties.NameProperty);
             }
+        }
+
+        private void HeaderPreviewButton_Click(object sender, RoutedEventArgs e)
+        {
+            var i = 1;
         }
     }
 }

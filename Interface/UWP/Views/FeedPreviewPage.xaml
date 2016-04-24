@@ -8,7 +8,44 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
 
-    <Grid Background="{ThemeResource SystemControlBackgroundChromeMediumBrush}">
+    <Page.Resources>
+        <Style x:Key="FeedPreviewButton" TargetType="Button">
+            <Setter Property="Background">
+                <Setter.Value>
+                    <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
+                        <GradientStop Offset="0" Color="Gold"/>
+                        <GradientStop Offset="1" Color="Goldenrod"/>
+                    </LinearGradientBrush>
+                </Setter.Value>
+            </Setter>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Grid Background="{TemplateBinding Background}" >
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition />
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition/>
+                                <RowDefinition />
+                                <RowDefinition/>
+                            </Grid.RowDefinitions>
+                            <ContentPresenter x:Name="Content" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            <FontIcon Grid.Column="1" FontSize="16" Glyph="&#xE011;" Margin="0,0,10,0" VerticalAlignment="Center" HorizontalAlignment="Right"/>
+                            <!-- UP &#xE010; DOWN &#xE011;-->
+                            <Button Content="ASSINAR" Grid.Row="1" Grid.ColumnSpan="2"  />
+                            <TextBlock Grid.Row="2" Grid.ColumnSpan="2" MaxLines="2" TextWrapping="WrapWholeWords"  Text="A few guys goofing off wasting time, trying to make other people laugh at what we already think is funny. We make fun of the tech world and pop culture around us" />
+                        </Grid>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Page.Resources>
+    
+    
+    
+    <Grid x:Name="RootGrid" Background="{ThemeResource SystemControlBackgroundChromeMediumBrush}">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition />
@@ -23,32 +60,14 @@
             </CommandBar.Content>
         </CommandBar>
 
-        <ScrollViewer Grid.Row="1" HorizontalScrollMode="Disabled" VerticalScrollBarVisibility="Hidden" Padding="0,20,0,0"  Background="{ThemeResource SystemControlBackgroundChromeMediumBrush}">
+        <ScrollViewer Grid.Row="1" HorizontalScrollMode="Disabled" VerticalScrollBarVisibility="Hidden" Padding="0,0,0,0"  Background="{ThemeResource SystemControlBackgroundChromeMediumBrush}">
             <StackPanel HorizontalAlignment="Stretch">
                 <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition />
                         <RowDefinition />
                     </Grid.RowDefinitions>
-                    <SplitView x:Name="RootSplitView"
-                               DisplayMode="CompactInline"
-                               OpenPaneLength="256"
-                               IsTabStop="False" Margin="0,48,0,0">
-                        <SplitView.Pane >
-                            <StackPanel Orientation="Vertical">
-                                <Grid>
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="Auto"/>
-                                        <ColumnDefinition/>
-                                    </Grid.ColumnDefinitions>
-                                    <TextBlock Text="TOTAL WASTE OF TIME WITH BS" />
-                                    <ToggleButton x:Name="TogglePaneButton" Content="v" Grid.Column="1"/>
-                                </Grid>
-                                <Button Content="ASSINAR" />
-                                <TextBlock Text="A few guys goofing off wasting time, trying to make other people laugh at what we already think is funny. We make fun of the tech world and pop culture around us" />
-                            </StackPanel>
-                        </SplitView.Pane>
-                    </SplitView>
+                    <Button x:Name="HeaderPreviewButton" Click="HeaderPreviewButton_Click" Content="TOTAL WASTE OF TIME WITH BS" HorizontalAlignment="Center" Width="{Binding ActualWidth, ElementName=RootGrid}" Height="150" Style="{StaticResource FeedPreviewButton}"/>
                     <ListView x:Name="EpisodeMenuList"
                                 Grid.Row="1"
                                 ContainerContentChanging="EpisodeMenuItemContainerContentChanging"
