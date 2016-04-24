@@ -117,6 +117,9 @@
     <Compile Include="Views\EpisodePage.xaml.cs">
       <DependentUpon>EpisodePage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\FeedPreviewPage.xaml.cs">
+      <DependentUpon>FeedPreviewPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\SettingsPage.xaml.cs">
       <DependentUpon>SettingsPage.xaml</DependentUpon>
     </Compile>
@@ -178,6 +181,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\EpisodePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\FeedPreviewPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

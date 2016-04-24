@@ -1,0 +1,66 @@
+﻿<Page
+    x:Class="BGPCastUWP.Interface.UWP.Views.FeedPreviewPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:BGPCastUWP.Interface.UWP.Views"
+    xmlns:controls="using:BGPCastUWP.Interface.UWP.Controls"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid Background="{ThemeResource SystemControlBackgroundChromeMediumBrush}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        <CommandBar x:Name="TopCommandBar" VerticalAlignment="Top" HorizontalContentAlignment="Stretch" Background="Gray">
+            <CommandBar.Content>
+                <controls:PageHeader Background="Gray">
+                    <controls:PageHeader.HeaderContent >
+                        <TextBlock x:Name="AddTextBlock" Text="Feed Preview" Style="{ThemeResource PageTitleTextBlockStyle}"/>
+                    </controls:PageHeader.HeaderContent>
+                </controls:PageHeader>
+            </CommandBar.Content>
+        </CommandBar>
+
+        <ScrollViewer Grid.Row="1" HorizontalScrollMode="Disabled" VerticalScrollBarVisibility="Hidden" Padding="0,20,0,0"  Background="{ThemeResource SystemControlBackgroundChromeMediumBrush}">
+            <StackPanel HorizontalAlignment="Stretch">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition />
+                        <RowDefinition />
+                    </Grid.RowDefinitions>
+                    <SplitView x:Name="RootSplitView"
+                               DisplayMode="CompactInline"
+                               OpenPaneLength="256"
+                               IsTabStop="False" Margin="0,48,0,0">
+                        <SplitView.Pane >
+                            <StackPanel Orientation="Vertical">
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto"/>
+                                        <ColumnDefinition/>
+                                    </Grid.ColumnDefinitions>
+                                    <TextBlock Text="TOTAL WASTE OF TIME WITH BS" />
+                                    <ToggleButton x:Name="TogglePaneButton" Content="v" Grid.Column="1"/>
+                                </Grid>
+                                <Button Content="ASSINAR" />
+                                <TextBlock Text="A few guys goofing off wasting time, trying to make other people laugh at what we already think is funny. We make fun of the tech world and pop culture around us" />
+                            </StackPanel>
+                        </SplitView.Pane>
+                    </SplitView>
+                    <ListView x:Name="EpisodeMenuList"
+                                Grid.Row="1"
+                                ContainerContentChanging="EpisodeMenuItemContainerContentChanging"
+                                ItemTemplate="{StaticResource EpisodeMenuItemTemplate}">
+                        <ListView.ItemContainerStyle>
+                            <Style TargetType="ListViewItem">
+                                <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+                            </Style>
+                        </ListView.ItemContainerStyle>
+                    </ListView>
+                </Grid>
+            </StackPanel>
+        </ScrollViewer>
+    </Grid>
+</Page>
