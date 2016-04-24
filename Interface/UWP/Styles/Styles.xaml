@@ -174,12 +174,12 @@
         </Grid>
     </DataTemplate>
     <DataTemplate x:Key="AddFeedMenuItemTemplate">
-        <StackPanel Orientation="Vertical" Margin="0,10,0,10">
-            <TextBlock x:Name="Publish" Text="{Binding LastUpdated}" />
-            <TextBlock x:Name="Title" Text="{Binding Title}"  MaxLines="2" />
-            <TextBlock x:Name="Description" Text="{Binding Description}" MaxLines="2"/>
+        <StackPanel Orientation="Vertical" Margin="0,5,0,5" Padding="0,10,0,10" Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+            <TextBlock x:Name="Publish" Text="{Binding LastUpdated}"  Margin="10,0,0,0" />
+            <TextBlock x:Name="Title" Text="{Binding Title}"  MaxLines="2"  Margin="10,0,0,0" />
+            <TextBlock x:Name="Description" Text="{Binding Description}" MaxLines="2"  Margin="10,0,0,0" />
             <StackPanel Orientation="Horizontal">
-                <Image x:Name="Logo" Source="{Binding Image.Url}" Width="40" Height="40" VerticalAlignment="Center" Stretch="Uniform" HorizontalAlignment="Center"/>
+                <Image x:Name="Logo" Source="{Binding Image.Url}" Width="80" Height="80" VerticalAlignment="Center" Stretch="Uniform" HorizontalAlignment="Center"/>
                 <Button Content="ASSINAR" />
             </StackPanel>
         </StackPanel>

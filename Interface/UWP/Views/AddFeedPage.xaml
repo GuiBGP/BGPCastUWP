@@ -12,8 +12,9 @@
         <TextBlock x:Name="textBlock" HorizontalAlignment="Center" VerticalAlignment="Center"  TextWrapping="Wrap" Text="This is Add Feed Page!" />
     </Grid>-->
 
-    <Grid>
+    <Grid Background="{ThemeResource SystemControlBackgroundChromeMediumBrush}">
         <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
             <RowDefinition />
         </Grid.RowDefinitions>
@@ -43,9 +44,9 @@
         </CommandBar>
         
         <!--TODO: Verificar como é a melhor forma de colocar um Progress, seja Bar o Ring-->
-        <ProgressRing x:Name="AddFeedProgressRing" VerticalAlignment="Center" HorizontalAlignment="Center" IsActive="False"/>
+        <ProgressBar x:Name="AddFeedProgress" Grid.Row="1" IsIndeterminate="True" Visibility="Collapsed" />
 
-        <Pivot x:Name="RootPivot" Grid.Row="1" Background="{ThemeResource SystemControlBackgroundChromeMediumBrush}">
+        <Pivot x:Name="RootPivot" Grid.Row="2" Background="{ThemeResource SystemControlBackgroundChromeMediumBrush}">
             <PivotItem Header="TENDÊNCIAS">
                 <!--Pivot content goes here-->
                 <TextBlock Text="Content of pivot item 1. TENDÊNCIAS"/>
@@ -72,7 +73,8 @@
             </PivotItem>
         </Pivot>
         <ListView x:Name="FeedMenuList" Visibility="Collapsed"
-                Grid.Row="1"
+                Grid.Row="2"
+                Padding="0,20,0,0" 
                 ItemTemplate="{StaticResource AddFeedMenuItemTemplate}">
             <ListView.ItemContainerStyle>
                 <Style TargetType="ListViewItem">
