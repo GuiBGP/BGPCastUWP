@@ -71,31 +71,15 @@ namespace BGPCastUWP.Interface.UWP.Views
 
                 iTunesSearch.SearchResult result = await (new iTunesSearch.SearchRequest()).SearchAsync("p%", iTunesSearch.Media.Podcast);
 
-                HttpFeedFactory factory = new HttpFeedFactory(new QDFeedParser.Xml.PodcastFeedXmlParser(), new PodcastFeedInstanceProvider());
-
-                FeedMenuList.Items.Clear();
-
-                Stopwatch sw = new Stopwatch();
-
-                sw.Start();
-
-                foreach (var item in result.Results)
-                {
-                    try
-                    {
-                        PodcastRss20Feed feed = (PodcastRss20Feed)await factory.CreateFeedAsync(new Uri(item.FeedUrl));
-                        FeedMenuList.Items.Add(feed);
-                    }
-                    catch { }
-                }
-
-                sw.Stop();
-
-                SearchTextBox.Text += " | " + sw.Elapsed;
+                FeedMenuList.ItemsSource = result.Results;
+                //if hava only one line of artist name, we put the releaseDate again
 
                 AddFeedProgress.Visibility = Visibility.Collapsed;
 
-                await new MessageDialog("Downloading!!!  " + result.ResultCount).ShowAsync();
+                FindAppBarButtom.Visibility = Visibility.Visible;
+                AddTextBlock.Visibility = Visibility.Visible;
+                CancelAppBarButtom.Visibility = Visibility.Collapsed;
+                SearchTextBox.Visibility = Visibility.Collapsed;
             }
         }
     }
