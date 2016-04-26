@@ -34,8 +34,7 @@ namespace BGPCastUWP.Interface.UWP.Views
 
             EpisodeMenuList.SelectionMode = ListViewSelectionMode.Single;
             EpisodeMenuList.ItemsSource = navlist;
-
-
+            HeaderPreviewToggleButton.Content = navlist[0];
         }
 
         /// <summary>
