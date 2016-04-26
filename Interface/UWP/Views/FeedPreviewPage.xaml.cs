@@ -56,9 +56,9 @@ namespace BGPCastUWP.Interface.UWP.Views
             }
         }
 
-        private void HeaderPreviewButton_Click(object sender, RoutedEventArgs e)
+        private void HeaderPreviewToggleButton_Click(object sender, RoutedEventArgs e)
         {
-            var i = 1;
+            HeaderPreviewToggleButton.IsChecked = HeaderPreviewToggleButton.IsChecked & true;
         }
     }
 }
