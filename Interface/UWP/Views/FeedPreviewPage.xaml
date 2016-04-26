@@ -29,13 +29,13 @@
                                 <RowDefinition/>
                             </Grid.RowDefinitions>
                             <!--<ContentPresenter x:Name="Content" FontWeight="Bold" Margin="0,10,0,0" HorizontalAlignment="Center" VerticalAlignment="Center" />  -->
-                            <TextBlock  FontWeight="Bold" Margin="0,10,0,0" HorizontalAlignment="Center" VerticalAlignment="Center" Text="{Binding Content.Name, ElementName=HeaderPreviewToggleButton}"/>
+                            <TextBlock  FontWeight="Bold" Margin="0,10,0,0" HorizontalAlignment="Center" VerticalAlignment="Center" Text="{Binding Content.Title, ElementName=HeaderPreviewToggleButton}"/>
                             <FontIcon Grid.Column="1" FontSize="16" Glyph="&#xE011;" Margin="0,10,7,0" VerticalAlignment="Center" HorizontalAlignment="Right" Visibility="{Binding IsChecked, ElementName=HeaderPreviewToggleButton, Converter={StaticResource BooleanToVisibilityConverter}, ConverterParameter='Reverse'}"/>
                             <FontIcon Grid.Column="1" FontSize="16" Glyph="&#xE010;" Margin="0,10,7,0" VerticalAlignment="Center" HorizontalAlignment="Right" Visibility="{Binding IsChecked, ElementName=HeaderPreviewToggleButton, Converter={StaticResource BooleanToVisibilityConverter}}"/>
                             <!-- UP &#xE010; DOWN &#xE011;-->
                             <Button Content="ASSINAR" Grid.Row="1" Grid.ColumnSpan="2" Visibility="{Binding IsChecked, ElementName=HeaderPreviewToggleButton, Converter={StaticResource BooleanToVisibilityConverter}}"/>
                             <TextBlock Grid.Row="2" Grid.ColumnSpan="2" MaxLines="2" TextWrapping="WrapWholeWords" Visibility="{Binding IsChecked, ElementName=HeaderPreviewToggleButton, Converter={StaticResource BooleanToVisibilityConverter}}"
-                                       Text="{Binding Content.News, ElementName=HeaderPreviewToggleButton}" />
+                                       Text="{Binding Content.Description, ElementName=HeaderPreviewToggleButton}" />
                         </Grid>
                     </ControlTemplate>
                 </Setter.Value>

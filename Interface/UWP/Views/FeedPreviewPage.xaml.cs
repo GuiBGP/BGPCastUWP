@@ -1,4 +1,7 @@
 ﻿using BGPCastUWP.Interface.UWP.Controls;
+using iTunesSearch;
+using QDFeedParser;
+using QDFeedParser.Xml;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -34,7 +37,19 @@ namespace BGPCastUWP.Interface.UWP.Views
 
             EpisodeMenuList.SelectionMode = ListViewSelectionMode.Single;
             EpisodeMenuList.ItemsSource = navlist;
-            HeaderPreviewToggleButton.Content = navlist[0];
+
+
+
+        }
+
+        protected override async void OnNavigatedTo(NavigationEventArgs e)
+        {
+            Uri uriFeed = new Uri(((ItemResult)e.Parameter).FeedUrl);
+
+            HttpFeedFactory factory = new HttpFeedFactory(new PodcastFeedXmlParser(), new PodcastFeedInstanceProvider());
+            PodcastRss20Feed feed = (PodcastRss20Feed)await factory.CreateFeedAsync(uriFeed);
+            HeaderPreviewToggleButton.Content = feed;
+            //TODO: Colocar a ProgressBar
         }
 
         /// <summary>
