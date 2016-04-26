@@ -36,10 +36,7 @@ namespace BGPCastUWP.Interface.UWP.Views
             this.InitializeComponent();
 
             EpisodeMenuList.SelectionMode = ListViewSelectionMode.Single;
-            EpisodeMenuList.ItemsSource = navlist;
-
-
-
+//            EpisodeMenuList.ItemsSource = navlist;
         }
 
         protected override async void OnNavigatedTo(NavigationEventArgs e)
@@ -50,6 +47,14 @@ namespace BGPCastUWP.Interface.UWP.Views
             PodcastRss20Feed feed = (PodcastRss20Feed)await factory.CreateFeedAsync(uriFeed);
             HeaderPreviewToggleButton.Content = feed;
             //TODO: Colocar a ProgressBar
+
+            //Apenas um teste para ver a ListView dinâmica.
+            EpisodeMenuList.ItemsSource = feed.Items.Select(i => new NavMenuItem() {
+                Logo = (feed.Image == null ? ((ItemResult)e.Parameter).ArtworkUrl60 : feed.Image.Url),
+                Name = i.Title,
+                News = String.Format("d 'DE' MMMM 'DE' yyyy", i.DatePublished),
+                Quantity = i.Content
+            });
         }
 
         /// <summary>
