@@ -49,12 +49,7 @@ namespace BGPCastUWP.Interface.UWP.Views
             //TODO: Colocar a ProgressBar
 
             //Apenas um teste para ver a ListView dinâmica.
-            EpisodeMenuList.ItemsSource = feed.Items.Select(i => new NavMenuItem() {
-                Logo = (feed.Image == null ? ((ItemResult)e.Parameter).ArtworkUrl60 : feed.Image.Url),
-                Name = i.Title,
-                News = String.Format("d 'DE' MMMM 'DE' yyyy", i.DatePublished),
-                Quantity = i.Content
-            });
+            EpisodeMenuList.ItemsSource = feed.Items;
         }
 
         /// <summary>
