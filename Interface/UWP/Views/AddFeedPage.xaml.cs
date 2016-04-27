@@ -74,7 +74,7 @@ namespace BGPCastUWP.Interface.UWP.Views
                 FeedMenuList.Visibility = Visibility.Visible;
                 AddFeedProgress.Visibility = Visibility.Visible;
 
-                SearchResult result = await (new SearchRequest()).SearchAsync("p%", iTunesSearch.Media.Podcast);
+                SearchResult result = await (new SearchRequest()).SearchAsync(SearchTextBox.Text, iTunesSearch.Media.Podcast);
 
                 FeedMenuList.ItemsSource = result.Results;
                 //if hava only one line of artist name, we put the releaseDate again
