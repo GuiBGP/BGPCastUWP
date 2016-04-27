@@ -50,6 +50,8 @@ namespace BGPCastUWP.Interface.UWP.Views
 
             //Apenas um teste para ver a ListView dinâmica.
             EpisodeMenuList.ItemsSource = feed.Items;
+
+            feed.Items[0]
         }
 
         /// <summary>
