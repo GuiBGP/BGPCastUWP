@@ -71,7 +71,7 @@
                     <ListView x:Name="EpisodeMenuList"
                                 Grid.Row="1"
                                 ContainerContentChanging="EpisodeMenuItemContainerContentChanging"
-                                ItemTemplate="{StaticResource EpisodeMenuItemTemplate}">
+                                ItemTemplate="{StaticResource EpisodePreviewItemTemplate}">
                         <ListView.ItemContainerStyle>
                             <Style TargetType="ListViewItem">
                                 <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
