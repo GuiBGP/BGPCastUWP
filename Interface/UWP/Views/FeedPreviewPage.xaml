@@ -68,7 +68,7 @@
                         <RowDefinition />
                     </Grid.RowDefinitions>
                     <ToggleButton x:Name="HeaderPreviewToggleButton" Click="HeaderPreviewToggleButton_Click"  Background="Goldenrod" Width="{Binding ActualWidth, ElementName=RootGrid}" Style="{StaticResource FeedPreviewButton}"/>
-                    <ListView x:Name="EpisodeMenuList"
+                    <ListView x:Name="EpisodeMenuList" 
                                 Grid.Row="1"
                                 ContainerContentChanging="EpisodeMenuItemContainerContentChanging"
                                 ItemTemplate="{StaticResource EpisodePreviewItemTemplate}">

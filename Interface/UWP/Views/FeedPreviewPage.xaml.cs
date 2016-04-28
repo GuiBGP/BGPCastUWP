@@ -29,8 +29,6 @@ namespace BGPCastUWP.Interface.UWP.Views
     /// </summary>
     public sealed partial class FeedPreviewPage : Page
     {
-        private List<NavMenuItem> navlist = NavMenuItem.GetList();
-
         public FeedPreviewPage()
         {
             this.InitializeComponent();
@@ -41,17 +39,18 @@ namespace BGPCastUWP.Interface.UWP.Views
 
         protected override async void OnNavigatedTo(NavigationEventArgs e)
         {
-            Uri uriFeed = new Uri(((ItemResult)e.Parameter).FeedUrl);
+            ItemResult itemResult = (ItemResult)e.Parameter;
+            Uri uriFeed = new Uri((itemResult).FeedUrl);
 
             HttpFeedFactory factory = new HttpFeedFactory(new PodcastFeedXmlParser(), new PodcastFeedInstanceProvider());
             PodcastRss20Feed feed = (PodcastRss20Feed)await factory.CreateFeedAsync(uriFeed);
+            
+            //TODO: Criar um User Control para essa lista, de forma e escolher a melhor maineira de exibir a Imagem.
+            feed.Image = (feed.Image == null ? new PodcastRss20FeedImage()  { Url = itemResult.ArtworkUrl60 } : feed.Image);
             HeaderPreviewToggleButton.Content = feed;
             //TODO: Colocar a ProgressBar
-
-            //Apenas um teste para ver a ListView dinâmica.
+            
             EpisodeMenuList.ItemsSource = feed.Items;
-
-            feed.Items[0]
         }
 
         /// <summary>
