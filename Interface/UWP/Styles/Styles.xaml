@@ -138,7 +138,11 @@
                 <RowDefinition />
                 <RowDefinition />
             </Grid.RowDefinitions>
-            <Image x:Name="Logo" Source="{Binding Logo}" Grid.Column="0" Grid.Row="0" Grid.RowSpan="2" Width="80" Height="80" VerticalAlignment="Center" Stretch="Uniform" HorizontalAlignment="Center"/>
+            <StackPanel Orientation="Vertical" Grid.Column="0" Grid.Row="0" Grid.RowSpan="2">
+                <Image x:Name="Logo" Source="{Binding Logo}"  Width="80" Height="80" VerticalAlignment="Center" Stretch="Uniform" HorizontalAlignment="Center"/>
+                <!-- Mim, Max e Value devem ser definidos Dinamicamente-->
+                <ProgressBar x:Name="Progress" Visibility="Visible" IsIndeterminate="False" Minimum="0" Maximum="60" Value="{Binding Quantity}" Background="Black" Foreground="Orange" /> 
+            </StackPanel>
             <!--Aqui deve ser criado uma progress bar, que permita a exibição do tempo-->
             <TextBlock x:Name="Publish" Text="{Binding DatePublished, Converter={StaticResource StringFormatConverter}, ConverterParameter='{}{0:d }de {0:MMMM} de {0:yyyy}'}" Grid.Column="1" Grid.Row="0" TextAlignment="Left" VerticalAlignment="Top" Margin="10,0,0,0" />
             <TextBlock x:Name="Title" Text="{Binding Title}"  MaxLines="2" TextWrapping="Wrap" TextTrimming="WordEllipsis" Grid.Column="1" Grid.Row="1" TextAlignment="Left" VerticalAlignment="Top" Margin="10,5,0,0"/>
