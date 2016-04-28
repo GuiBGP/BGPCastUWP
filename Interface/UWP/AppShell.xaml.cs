@@ -328,7 +328,10 @@ namespace BGPCastUWP.Interface.UWP
                 default:
                     break;
             }
-
+            if (RootSplitView.IsPaneOpen)
+            {
+                RootSplitView.IsPaneOpen = false;
+            }
         }
     }
 }
