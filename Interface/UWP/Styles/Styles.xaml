@@ -215,7 +215,9 @@
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
                 <Image x:Name="Logo"  Source="{Binding ArtworkUrl60}" Width="60" Height="60" Margin="10,5,0,0" VerticalAlignment="Center" Stretch="Uniform" HorizontalAlignment="Center"/>
-                <Button Grid.Column="2" Content="ASSINAR" Margin="20,0,20,0" HorizontalAlignment="Left" VerticalAlignment="Bottom" Foreground="DarkOrange" FontWeight="Bold" />
+                <!--TODO: Button deve ser substituido por um TextBlock quando o Feed já houver sido Adicionado.-->
+                <Button Visibility="Collapsed" Grid.Column="2" Content="ASSINAR" Margin="20,0,20,0" HorizontalAlignment="Left" VerticalAlignment="Bottom" Foreground="DarkOrange" FontWeight="Bold" />
+                <TextBlock  Grid.Column="2" Text="EM O QUE TOCAR" Margin="20,0,20,0" HorizontalAlignment="Left" VerticalAlignment="Bottom" FontWeight="Bold" />
             </Grid>
         </StackPanel>
     </DataTemplate>
