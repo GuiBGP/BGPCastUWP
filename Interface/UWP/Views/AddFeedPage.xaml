@@ -40,7 +40,7 @@
         </CommandBar>
         
         <!--TODO: Verificar como é a melhor forma de colocar um Progress, seja Bar o Ring-->
-        <ProgressBar x:Name="AddFeedProgress" Grid.Row="1" IsIndeterminate="True" Visibility="Collapsed" />
+        <ProgressBar x:Name="PageProgress" Grid.Row="1" IsIndeterminate="True" Visibility="Collapsed" />
 
         <Pivot x:Name="RootPivot" Grid.Row="2" Background="{ThemeResource SystemControlBackgroundChromeMediumBrush}">
             <PivotItem Header="TENDÊNCIAS">

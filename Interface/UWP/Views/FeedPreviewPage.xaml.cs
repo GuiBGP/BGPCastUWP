@@ -34,11 +34,12 @@ namespace BGPCastUWP.Interface.UWP.Views
             this.InitializeComponent();
 
             EpisodeMenuList.SelectionMode = ListViewSelectionMode.Single;
-//            EpisodeMenuList.ItemsSource = navlist;
         }
 
         protected override async void OnNavigatedTo(NavigationEventArgs e)
         {
+            PageProgress.Visibility = Visibility.Visible;
+
             ItemResult itemResult = (ItemResult)e.Parameter;
             Uri uriFeed = new Uri((itemResult).FeedUrl);
 
@@ -51,6 +52,9 @@ namespace BGPCastUWP.Interface.UWP.Views
             //TODO: Colocar a ProgressBar
             
             EpisodeMenuList.ItemsSource = feed.Items;
+
+            HeaderPreviewToggleButton.Visibility = Visibility.Visible;
+            PageProgress.Visibility = Visibility.Collapsed;
         }
 
         /// <summary>

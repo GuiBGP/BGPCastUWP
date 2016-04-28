@@ -48,6 +48,7 @@
     <Grid x:Name="RootGrid" Background="{ThemeResource SystemControlBackgroundChromeMediumBrush}">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
             <RowDefinition />
         </Grid.RowDefinitions>
         <CommandBar x:Name="TopCommandBar" VerticalAlignment="Top" HorizontalContentAlignment="Stretch" Background="Gray">
@@ -59,15 +60,16 @@
                 </controls:PageHeader>
             </CommandBar.Content>
         </CommandBar>
-
-        <ScrollViewer Grid.Row="1" HorizontalScrollMode="Disabled" VerticalScrollBarVisibility="Hidden" Padding="0,0,0,0"  Background="{ThemeResource SystemControlBackgroundChromeMediumBrush}">
+        <!--TODO: Verificar como é a melhor forma de colocar um Progress, seja Bar o Ring-->
+        <ProgressBar x:Name="PageProgress" Grid.Row="1" IsIndeterminate="True" Visibility="Collapsed" />
+        <ScrollViewer Grid.Row="2" HorizontalScrollMode="Disabled" VerticalScrollBarVisibility="Hidden" Padding="0,0,0,0"  Background="{ThemeResource SystemControlBackgroundChromeMediumBrush}">
             <StackPanel HorizontalAlignment="Stretch">
                 <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition />
                         <RowDefinition />
                     </Grid.RowDefinitions>
-                    <ToggleButton x:Name="HeaderPreviewToggleButton" Click="HeaderPreviewToggleButton_Click"  Background="Goldenrod" Width="{Binding ActualWidth, ElementName=RootGrid}" Style="{StaticResource FeedPreviewButton}"/>
+                    <ToggleButton x:Name="HeaderPreviewToggleButton" Visibility="Collapsed" Click="HeaderPreviewToggleButton_Click"  Background="Goldenrod" Width="{Binding ActualWidth, ElementName=RootGrid}" Style="{StaticResource FeedPreviewButton}"/>
                     <ListView x:Name="EpisodeMenuList" 
                                 Grid.Row="1"
                                 ContainerContentChanging="EpisodeMenuItemContainerContentChanging"
