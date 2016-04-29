@@ -11,18 +11,21 @@
     <Page.Resources>
         <DataTemplate x:Key="AddFeedTendenciaItemTemplate">
             <StackPanel Orientation="Vertical" Margin="0,5,0,5" Padding="0,10,0,10" Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-                <TextBlock x:Name="Publish" Text="{Binding ReleaseDate, Converter={StaticResource StringFormatConverter}, ConverterParameter='{}{0:d }de {0:MMMM} de {0:yyyy}'}" Margin="10,0,0,0" />
-                <TextBlock x:Name="Title" Text="{Binding CollectionName}" MaxLines="2" TextWrapping="WrapWholeWords" FontWeight="Bold" Margin="10,0,0,0" />
-                <TextBlock x:Name="Description" Text="{Binding ArtistName}" MaxLines="2" TextWrapping="WrapWholeWords" TextTrimming="CharacterEllipsis" Margin="10,5,0,0" />
+                <!--{Binding Path=(ItemsControl.AlternationIndex), RelativeSource={RelativeSource TemplatedParent}}-->
+                <!--Descobrir como colocar o Index do Item para ser exibido.-->
+                <TextBlock x:Name="Index" Text="55"  Foreground="Gray" FontWeight="Bold" Margin="10,0,0,0" />
+                <TextBlock x:Name="Name" Text="{Binding Name}" Margin="10,0,0,0" />
+                <TextBlock x:Name="Title" Text="{Binding News}" MaxLines="2" TextWrapping="WrapWholeWords" FontWeight="Bold" Margin="10,0,0,0" />
+                <TextBlock x:Name="Description" Text="{Binding Logo}" MaxLines="2" TextWrapping="WrapWholeWords" TextTrimming="CharacterEllipsis" Margin="10,5,0,0" />
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="Auto"/>
                         <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
-                    <Image x:Name="Logo"  Source="{Binding ArtworkUrl60}" Width="60" Height="60" Margin="10,5,0,0" VerticalAlignment="Center" Stretch="Uniform" HorizontalAlignment="Center"/>
+                    <Image x:Name="Logo"  Source="{Binding Logo}" Width="60" Height="60" Margin="10,5,0,0" VerticalAlignment="Center" Stretch="Uniform" HorizontalAlignment="Center"/>
                     <!--TODO: Button deve ser substituido por um TextBlock quando o Feed já houver sido Adicionado.-->
-                    <Button Visibility="Collapsed" Grid.Column="2" Content="ASSINAR" Margin="20,0,20,0" HorizontalAlignment="Left" VerticalAlignment="Bottom" Foreground="DarkOrange" FontWeight="Bold" />
-                    <TextBlock  Grid.Column="2" Text="EM O QUE TOCAR" Margin="20,0,20,0" HorizontalAlignment="Left" VerticalAlignment="Bottom" FontWeight="Bold" />
+                    <Button Grid.Column="2" Content="ASSINAR" Margin="20,0,20,0" Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"  HorizontalAlignment="Left" VerticalAlignment="Bottom" Foreground="DarkOrange" FontWeight="Bold" />
+                    <TextBlock Visibility="Collapsed"  Grid.Column="2" Text="SUBSCRITO" Margin="20,0,20,0" HorizontalAlignment="Left" VerticalAlignment="Bottom" Foreground="Gray" FontWeight="SemiBold" />
                 </Grid>
             </StackPanel>
         </DataTemplate>
@@ -66,59 +69,71 @@
         <Pivot x:Name="RootPivot" Grid.Row="2" Background="{ThemeResource SystemControlBackgroundChromeMediumBrush}">
             <PivotItem Header="TENDÊNCIAS">
                 <!--Pivot content goes here-->
-                <StackPanel Orientation="Vertical">
-                    <TextBlock Text="Content of pivot item 1. TENDÊNCIAS"/>
-                    <ListView x:Name="TendenciasListView"
+                <ScrollViewer HorizontalScrollMode="Disabled" VerticalScrollBarVisibility="Hidden" Padding="0,20,0,0"  Background="{ThemeResource SystemControlBackgroundChromeMediumBrush}">
+                    <StackPanel Orientation="Vertical">
+                        <TextBlock Text="Content of pivot item 1. TENDÊNCIAS"/>
+                        <ListView x:Name="TendenciasListView" AlternationCount="3"
                               ItemTemplate="{StaticResource AddFeedTendenciaItemTemplate}">
-                        <ListView.ItemContainerStyle>
-                            <Style TargetType="ListViewItem">
-                                <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
-                            </Style>
-                        </ListView.ItemContainerStyle>
-                    </ListView>
-                </StackPanel>
+                            <ListView.ItemContainerStyle>
+                                <Style TargetType="ListViewItem">
+                                    <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+                                </Style>
+                            </ListView.ItemContainerStyle>
+                        </ListView>
+                    </StackPanel>
+                </ScrollViewer>
             </PivotItem>
             <PivotItem Header="RECOMENDADO">
                 <!--Pivot content goes here-->
-                <StackPanel Orientation="Vertical">
-                    <TextBlock Text="Content of pivot item 2. RECOMENDADO"/>
-                    <ListView x:Name="RecomendadoListView"                              
+                <ScrollViewer HorizontalScrollMode="Disabled" VerticalScrollBarVisibility="Hidden" Padding="0,20,0,0"  Background="{ThemeResource SystemControlBackgroundChromeMediumBrush}">
+                    <StackPanel Orientation="Vertical">
+                        <TextBlock Text="Content of pivot item 2. RECOMENDADO"/>
+                        <ListView x:Name="RecomendadoListView"                              
                               ItemTemplate="{StaticResource AddFeedTendenciaItemTemplate}">
-                        <ListView.ItemContainerStyle>
-                            <Style TargetType="ListViewItem">
-                                <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
-                            </Style>
-                        </ListView.ItemContainerStyle>
-                    </ListView>
-                </StackPanel>
+                            <ListView.ItemContainerStyle>
+                                <Style TargetType="ListViewItem">
+                                    <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+                                </Style>
+                            </ListView.ItemContainerStyle>
+                        </ListView>
+                    </StackPanel>
+                </ScrollViewer>
             </PivotItem>
             <PivotItem Header="EDITORES">
                 <!--Pivot content goes here-->
-                <StackPanel Orientation="Vertical">
-                    <TextBlock Text="Content of pivot item 3. EDITORES"/>
-                    <GridView x:Name="EditoresGridView"></GridView> 
-                </StackPanel>
+                <ScrollViewer HorizontalScrollMode="Disabled" VerticalScrollBarVisibility="Hidden" Padding="0,20,0,0"  Background="{ThemeResource SystemControlBackgroundChromeMediumBrush}">
+                    <StackPanel Orientation="Vertical">
+                        <TextBlock Text="Content of pivot item 3. EDITORES"/>
+                        <GridView x:Name="EditoresGridView"></GridView>
+                    </StackPanel>
+                </ScrollViewer>
             </PivotItem>
             <PivotItem Header="CATEGORIA">
                 <!--Pivot content goes here-->
-                <StackPanel Orientation="Vertical">
-                    <TextBlock Text="Content of pivot item 4. CATEGORIA"/>
-                    <GridView x:Name="CategoriaGridView"></GridView>
-                </StackPanel>
+                <ScrollViewer HorizontalScrollMode="Disabled" VerticalScrollBarVisibility="Hidden" Padding="0,20,0,0"  Background="{ThemeResource SystemControlBackgroundChromeMediumBrush}">
+                    <StackPanel Orientation="Vertical">
+                        <TextBlock Text="Content of pivot item 4. CATEGORIA"/>
+                        <GridView x:Name="CategoriaGridView"></GridView>
+                    </StackPanel>
+                </ScrollViewer>
             </PivotItem>
             <PivotItem Header="INTERNACIONAL">
                 <!--Pivot content goes here-->
-                <StackPanel Orientation="Vertical">
-                    <TextBlock Text="Content of pivot item 5. INTERNACIONAL"/>
-                    <GridView x:Name="InternacionalGridView"></GridView>
-                </StackPanel>
+                <ScrollViewer HorizontalScrollMode="Disabled" VerticalScrollBarVisibility="Hidden" Padding="0,20,0,0"  Background="{ThemeResource SystemControlBackgroundChromeMediumBrush}">
+                    <StackPanel Orientation="Vertical">
+                        <TextBlock Text="Content of pivot item 5. INTERNACIONAL"/>
+                        <GridView x:Name="InternacionalGridView"></GridView>
+                    </StackPanel>
+                </ScrollViewer>
             </PivotItem>
             <PivotItem Header="INTERESSES">
                 <!--Pivot content goes here-->
-                <StackPanel Orientation="Vertical">
-                    <TextBlock Text="Content of pivot item 6. INTERESSES"/>
-                    <GridView x:Name="InteressesGridView"></GridView>
-                </StackPanel>
+                <ScrollViewer HorizontalScrollMode="Disabled" VerticalScrollBarVisibility="Hidden" Padding="0,20,0,0"  Background="{ThemeResource SystemControlBackgroundChromeMediumBrush}">
+                    <StackPanel Orientation="Vertical">
+                        <TextBlock Text="Content of pivot item 6. INTERESSES"/>
+                        <GridView x:Name="InteressesGridView"></GridView>
+                    </StackPanel>
+                </ScrollViewer>
             </PivotItem>
         </Pivot>
         <ListView x:Name="FeedMenuList" Visibility="Collapsed"
