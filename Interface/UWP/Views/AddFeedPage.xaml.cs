@@ -1,4 +1,5 @@
-﻿using iTunesSearch;
+﻿using BGPCastUWP.Interface.UWP.Controls;
+using iTunesSearch;
 using QDFeedParser;
 using System;
 using System.Collections.Concurrent;
@@ -30,6 +31,8 @@ namespace BGPCastUWP.Interface.UWP.Views
     /// </summary>
     public sealed partial class AddFeedPage : Page
     {
+        private List<NavMenuItem> navlist = NavMenuItem.GetList();
+
         public AddFeedPage()
         {
             this.InitializeComponent();
@@ -37,6 +40,16 @@ namespace BGPCastUWP.Interface.UWP.Views
             FeedMenuList.SelectionMode = ListViewSelectionMode.Single;
             FeedMenuList.IsItemClickEnabled = true;
             FeedMenuList.ItemClick += FeedMenuList_ItemClick;
+
+
+            TendenciasListView.ItemsSource = navlist;
+            RecomendadoListView.ItemsSource = navlist;
+            EditoresGridView.ItemsSource = navlist;
+            CategoriaGridView.ItemsSource = navlist;
+            InternacionalGridView.ItemsSource = navlist;
+            InteressesGridView.ItemsSource = navlist;
+                
+
         }
 
         private void FindAppBarButtom_Click(object sender, RoutedEventArgs e)
