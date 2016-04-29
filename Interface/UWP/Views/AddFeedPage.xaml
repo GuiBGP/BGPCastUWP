@@ -96,7 +96,7 @@
                 <!--Pivot content goes here-->
                 <StackPanel Orientation="Vertical">
                     <TextBlock Text="Content of pivot item 3. EDITORES"/>
-                    <GridView x:Name="EditoresGridView"></GridView>
+                    <GridView x:Name="EditoresGridView"></GridView> 
                 </StackPanel>
             </PivotItem>
             <PivotItem Header="CATEGORIA">
