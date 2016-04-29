@@ -45,27 +45,45 @@
         <Pivot x:Name="RootPivot" Grid.Row="2" Background="{ThemeResource SystemControlBackgroundChromeMediumBrush}">
             <PivotItem Header="TENDÊNCIAS">
                 <!--Pivot content goes here-->
-                <TextBlock Text="Content of pivot item 1. TENDÊNCIAS"/>
+                <StackPanel Orientation="Vertical">
+                    <TextBlock Text="Content of pivot item 1. TENDÊNCIAS"/>
+                    <ListView x:Name="TendenciasListView" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="316" Height="524"/>
+                </StackPanel>
             </PivotItem>
             <PivotItem Header="RECOMENDADO">
                 <!--Pivot content goes here-->
-                <TextBlock Text="Content of pivot item 2. RECOMENDADO"/>
+                <StackPanel Orientation="Vertical">
+                    <TextBlock Text="Content of pivot item 2. RECOMENDADO"/>
+                    <ListView x:Name="RecomendadoListView" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="316" Height="524"/>
+                </StackPanel>
             </PivotItem>
             <PivotItem Header="EDITORES">
                 <!--Pivot content goes here-->
-                <TextBlock Text="Content of pivot item 3. EDITORES"/>
+                <StackPanel Orientation="Vertical">
+                    <TextBlock Text="Content of pivot item 3. EDITORES"/>
+                    <GridView x:Name="EditoresGridView" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="316" Height="524"/>
+                </StackPanel>
             </PivotItem>
             <PivotItem Header="CATEGORIA">
                 <!--Pivot content goes here-->
-                <TextBlock Text="Content of pivot item 4. CATEGORIA"/>
+                <StackPanel Orientation="Vertical">
+                    <TextBlock Text="Content of pivot item 4. CATEGORIA"/>
+                    <GridView x:Name="CategoriaGridView" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="316" Height="524"/>
+                </StackPanel>
             </PivotItem>
             <PivotItem Header="INTERNACIONAL">
                 <!--Pivot content goes here-->
-                <TextBlock Text="Content of pivot item 5. INTERNACIONAL"/>
+                <StackPanel Orientation="Vertical">
+                    <TextBlock Text="Content of pivot item 5. INTERNACIONAL"/>
+                    <GridView x:Name="InternacionalGridView" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="316" Height="524"/>
+                </StackPanel>
             </PivotItem>
             <PivotItem Header="INTERESSES">
                 <!--Pivot content goes here-->
-                <TextBlock Text="Content of pivot item 6. INTERESSES"/>
+                <StackPanel Orientation="Vertical">
+                    <TextBlock Text="Content of pivot item 6. INTERESSES"/>
+                    <GridView x:Name="InteressesGridView" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="316" Height="524"/>
+                </StackPanel>
             </PivotItem>
         </Pivot>
         <ListView x:Name="FeedMenuList" Visibility="Collapsed"
