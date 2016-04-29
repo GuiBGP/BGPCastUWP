@@ -69,7 +69,7 @@
                 <StackPanel Orientation="Vertical">
                     <TextBlock Text="Content of pivot item 1. TENDÊNCIAS"/>
                     <ListView x:Name="TendenciasListView"
-                              ItemTemplate="{StaticResource AddFeedMenuItemTemplate}">
+                              ItemTemplate="{StaticResource AddFeedTendenciaItemTemplate}">
                         <ListView.ItemContainerStyle>
                             <Style TargetType="ListViewItem">
                                 <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
@@ -82,7 +82,14 @@
                 <!--Pivot content goes here-->
                 <StackPanel Orientation="Vertical">
                     <TextBlock Text="Content of pivot item 2. RECOMENDADO"/>
-                    <ListView x:Name="RecomendadoListView"></ListView>
+                    <ListView x:Name="RecomendadoListView"                              
+                              ItemTemplate="{StaticResource AddFeedTendenciaItemTemplate}">
+                        <ListView.ItemContainerStyle>
+                            <Style TargetType="ListViewItem">
+                                <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+                            </Style>
+                        </ListView.ItemContainerStyle>
+                    </ListView>
                 </StackPanel>
             </PivotItem>
             <PivotItem Header="EDITORES">
